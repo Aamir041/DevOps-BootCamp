@@ -1,0 +1,7 @@
+FROM centos:7
+RUN yum install httpd -y && yum install tree -y
+COPY index.html /var/www/html
+COPY style.css /var/www/html
+COPY trb-img.png /var/www/html
+RUN systemctl enable httpd
+CMD ["httpd","-D","FOREGROUND"]
