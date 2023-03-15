@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  webserver:
+    image: httpd
+    container_name: webserver
+    ports:
+    - "9096:80"
+  database:
+    image: mysql
+    container_name: database
+    ports:
+    - "3316:3306"
+    environment:
+    - MYSQL_DATABASE=mit
+    - MYSQL_ROOT_PASSWORD=123
+  frontend:
+    build:
+      context: .
+      dockerfile: DockerFile1.df
+    image: luffy/kaizoku:frontend
+    container_name: frontend
+    ports:
+    - "9097:80" 
