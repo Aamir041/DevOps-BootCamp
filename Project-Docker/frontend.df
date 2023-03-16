@@ -1,0 +1,8 @@
+FROM centos:7
+RUN yum install httpd -y
+RUN yum install yum-utils -y
+RUN yum-config-manager --enable remi-php72 -y
+RUN yum install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip php-fileinfo -y
+COPY index.php /var/www/html
+EXPOSE 80
+CMD ["httpd","-D","FOREGROUND"]

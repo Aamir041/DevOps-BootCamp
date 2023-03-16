@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: ./frontend.df
+    image: aamir041/project1:frontend
+    ports:
+    - "9090:80"
+  backend:
+    build:
+      context: .
+      dockerfile: ./backend.df
+    image: aamir041/project1:backend
+    container_name: database
+    ports:
+    - "3309:3309"
+    environment:
+    - MYSQL_ROOT_PASSWORD=123
